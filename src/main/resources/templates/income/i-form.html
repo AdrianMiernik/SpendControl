@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Income Form</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <h1>Add Income</h1>
+    <hr>
+    <h2>Save</h2>
+
+    <form th:action="@{/income/add}" th:object="${income}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+        <input type="number" th:field="*{amount}" placeholder="Amount" class="form-control mb-4 col-4">
+        <input type="date" th:field="*{date}" placeholder="Date" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{incomeCategory.name}" placeholder="Category" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{comment}" placeholder="Comment" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save</button>
+
+    </form>
+    <hr>
+    <a th:href = "@{/income}" class="btn btn-light col-2"> Back to Income List</a>
+</div>
+</body>
+</html>
