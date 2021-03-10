@@ -24,9 +24,11 @@ public class Income {
 
     private String date;
 
-    @ManyToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "categoryIncome_id")
     private CategoryIncome categoryIncome;
 
+    @Column(length = 128, nullable = false)
     private String comment;
 
 

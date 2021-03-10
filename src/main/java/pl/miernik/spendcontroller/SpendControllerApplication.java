@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpendcontrollerApplication {
+public class SpendControllerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpendcontrollerApplication.class, args);
+        SpringApplication.run(SpendControllerApplication.class, args);
     }
 
 }

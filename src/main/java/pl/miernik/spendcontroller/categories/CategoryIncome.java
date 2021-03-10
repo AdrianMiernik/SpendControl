@@ -21,7 +21,7 @@ public class CategoryIncome {
     private long id;
 
     @NotBlank
-    @Column(nullable = false)
+    @Column(length = 45, nullable = false, unique = true)
     private String name;
 
 
