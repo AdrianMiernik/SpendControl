@@ -1,19 +1,18 @@
 package pl.miernik.spendcontroller.incomes;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.miernik.spendcontroller.categories.CategoryIncome;
 import pl.miernik.spendcontroller.categories.CategoryIncomeService;
+
 import java.util.List;
 
 @Controller
 @RequestMapping("/income")
 @RequiredArgsConstructor
 public class IncomeController {
-    @Autowired
     private final IncomeService incomeService;
     private final CategoryIncomeService categoryIncomeService;
 
