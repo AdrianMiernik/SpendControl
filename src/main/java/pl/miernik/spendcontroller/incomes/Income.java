@@ -1,5 +1,4 @@
-
-package pl.miernik.spendcontroller.model;
+package pl.miernik.spendcontroller.incomes;
 
 import lombok.*;
 import pl.miernik.spendcontroller.categories.CategoryIncome;
@@ -25,12 +24,8 @@ public class Income {
 
     private String date;
 
-
-    //@ManyToOne(fetch = FetchType.EAGER)
-    //@ManyToOne
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
     private CategoryIncome categoryIncome;
-
 
     private String comment;
 

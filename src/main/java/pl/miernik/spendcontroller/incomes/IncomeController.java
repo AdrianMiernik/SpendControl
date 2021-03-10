@@ -1,31 +1,27 @@
-package pl.miernik.spendcontroller.controller;
+package pl.miernik.spendcontroller.incomes;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pl.miernik.spendcontroller.model.Income;
-
-import pl.miernik.spendcontroller.repository.IncomeRepository;
-
-import java.util.Optional;
+import pl.miernik.spendcontroller.categories.CategoryIncome;
+import pl.miernik.spendcontroller.categories.CategoryIncomeService;
+import java.util.List;
 
 @Controller
 @RequestMapping("/income")
+@RequiredArgsConstructor
 public class IncomeController {
-    private final IncomeRepository incomeRepository;
-
-
     @Autowired
-    public IncomeController(IncomeRepository incomeRepository) {
-        this.incomeRepository = incomeRepository;
+    private final IncomeService incomeService;
+    private final CategoryIncomeService categoryIncomeService;
 
-    }
 
     //Displaying list of incomes
     @GetMapping("")
     public String displayIncomeList(Model model) {
-        model.addAttribute("incomeList", incomeRepository.findAll());
+        model.addAttribute("incomeList", incomeService.findAllIncomes());
         return ("income/i-list");
     }
 
@@ -33,40 +29,41 @@ public class IncomeController {
     @GetMapping("/add")
     public String addFormIncome(Model model) {
         model.addAttribute("income", new Income());
+        model.addAttribute("categories",categoryIncomeService.findAllCategories());
         return ("income/i-form");
     }
     @PostMapping("/add")
     public String addFormIncomePost(@ModelAttribute Income income) {
-        this.incomeRepository.save(income);
+        this.incomeService.saveIncome(income);
         return ("redirect:/income");
     }
 
     //Upading income
     @GetMapping("/update/{id}")
     public String updateFormIncome(@PathVariable long id, Model model) {
-        Optional<Income> income = incomeRepository.findById(id);
+        Income income = incomeService.getIncomeById(id);
         model.addAttribute("income", income);
+        model.addAttribute("categories", categoryIncomeService.findAllCategories());
         return "income/i-update";
     }
 
     @PostMapping("/update")
     public String updateFormIncomePost(@ModelAttribute Income income) {
-        this.incomeRepository.save(income);
+        this.incomeService.saveIncome(income);
         return ("redirect:/income");
     }
 
     //Deleting income
     @GetMapping("/delete/{id}")
     public String deleteIncome(@PathVariable long id) {
-        this.incomeRepository.deleteById(id);
+        this.incomeService.deleteIncomeById(id);
         return ("redirect:/income");
     }
 
-//    @GetMapping("/get/{id}")
-//    public Income getIncomeById(@PathVariable long id) {
-//        return this.incomeRepository.findById(id).orElseThrow(() -> {
-//            throw new RuntimeException("Income not found by id :: " + id);
-//        });
-//    }
+    @ModelAttribute("categories")
+    private List<CategoryIncome> categories(){
+        return categoryIncomeService.findAllCategories();
+    }
+
 
 }

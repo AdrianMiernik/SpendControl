@@ -31,7 +31,8 @@
         <tr th:each="income : ${incomeList}">
             <td th:text="${income.amount}"></td>
             <td th:text="${income.date}"></td>
-            <td th:text="${income.incomeCategory.name}"></td>
+            <td th:text="${income.categoryIncome.name}"></td>
+
             <td th:text="${income.comment}"></td>
             <td><a th:href="@{/income/update/{id}(id=${income.id})}" class="btn btn-primary">Update</a>
                 <a th:href="@{/income/delete/{id}(id=${income.id})}" class="btn btn-danger">Delete</a>

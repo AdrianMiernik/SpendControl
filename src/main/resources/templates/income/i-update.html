@@ -19,11 +19,29 @@
 
 
     <form th:action="@{/income/update}" th:object="${income}" method="post">
-        <input type="hidden" th:field="*{id}"/>
-        <input type="number" th:field="*{amount}" placeholder="Amount" class="form-control mb-4 col-4">
-        <input type="date" th:field="*{date}" placeholder="Date" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{incomeCategory.name}" placeholder="Category" class="form-control mb-4 col-4">
-        <input type="text" th:field="*{comment}" placeholder="Comment" class="form-control mb-4 col-4">
+        <div>
+            <input type="hidden" th:field="*{id}"/>
+        </div>
+
+        <div>
+            <input type="number" th:field="*{amount}" placeholder="Amount" class="form-control mb-4 col-4">
+        </div>
+
+        <div>
+            <input type="date" th:field="*{date}" placeholder="Date" class="form-control mb-4 col-4">
+        </div>
+
+        <div>
+            <select th:field="*{categoryIncome}" placeholder="Category" class="form-control mb-4 col-4">
+                <th:block th:each="cat : ${categories}">
+                    <option th:text="${cat.name}" th:value="${cat.id}"/>
+                </th:block>
+            </select>
+        </div>
+
+        <div>
+            <input type="text" th:field="*{comment}" placeholder="Comment" class="form-control mb-4 col-4">
+        </div>
 
         <button type="submit" class="btn btn-info col-2"> Update</button>
 

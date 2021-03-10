@@ -3,6 +3,8 @@ package pl.miernik.spendcontroller.categories;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,14 +13,14 @@ import javax.persistence.*;
 @Entity
 @ToString
 @Builder
-@Table(name = "category_income")
+@Table
 public class CategoryIncome {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
+    @NotBlank
     @Column(nullable = false)
     private String name;
 
