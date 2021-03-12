@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script th:replace="header :: headerElement"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Add Expense</title>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+<div class="container">
+    <h1>Add Expense</h1>
+    <hr>
+    <h2>Save</h2>
+    <form th:action="@{/expense/add}" th:object="${expense}" method="post">
+        <div>
+            <input type="hidden" th:field="*{id}"/>
+        </div>
+        <div>
+            <input type="number" th:field="*{amount}" placeholder="Amount" class="form-control mb-4 col-4"/>
+        </div>
+        <div>
+            <input type="date" th:field="*{date}" placeholder="Date" class="form-control mb-4 col-4"/>
+        </div>
+        <div>
+            <select th:field="*{categoryExpense}" placeholder="Category" class="form-control mb-4 col-4">
+                <th:block th:each="category : ${categories}">
+                    <option th:text="${category.name}" th:value="${category.id}"/>
+                </th:block>
+            </select>
+        </div>
+        <diV>
+            <input type="text" th:field="*{comment}" th:placeholder="Comment" class="form-control mb-4 col-4">
+        </diV>
+                <div>
+                    <select th:field="*{paymentMethod}" placeholder="Payment Method" class="form-control mb-4 col-4">
+                        <th:block th:each="method : ${paymentMethods}">
+                            <option th:text="${method.name}" th:value="${method.id}"/>
+                        </th:block>
+                    </select>
+                </div>
+        <div>
+            <button type="submit" class="btn btn-info col-2">Save</button>
+        </div>
+    </form>
+    <hr>
+    <a th:href="@{/expense}" class="btn btn-light col-2">Back to Expense List</a>
+</div>
+</body>
+</html>
