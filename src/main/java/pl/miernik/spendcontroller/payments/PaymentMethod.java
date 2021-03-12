@@ -1,4 +1,4 @@
-package pl.miernik.spendcontroller.paymentMethods;
+package pl.miernik.spendcontroller.payments;
 
 import lombok.*;
 
