@@ -2,20 +2,16 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-
 <head>
+    <script th:replace="header :: headerElement"></script>
     <meta charset="UTF-8">
     <title>Update Income</title>
-
-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-
 </head>
 <body>
+<div th:replace="header :: header"></div>
 <div class="container">
     <h1>Edit Income</h1>
     <hr>
-
-
     <form th:action="@{/income/update}" th:object="${income}" method="post">
         <div>
             <input type="hidden" th:field="*{id}"/>
@@ -36,17 +32,15 @@
                 </th:block>
             </select>
         </div>
-
         <div>
             <input type="text" th:field="*{comment}" placeholder="Comment" class="form-control mb-4 col-4">
         </div>
-
-        <button type="submit" class="btn btn-info col-2"> Update</button>
-
+        <div>
+            <button type="submit" class="btn btn-info col-2"> Update</button>
+        </div>
     </form>
     <hr>
-    <a th:href = "@{/income}" class="btn btn-light col-2"> Back to Income List</a>
-
+    <a th:href="@{/income}" class="btn btn-light col-2"> Back to Income List</a>
 </div>
 </body>
 </html>

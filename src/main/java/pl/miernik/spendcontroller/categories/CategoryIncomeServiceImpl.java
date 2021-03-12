@@ -9,6 +9,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CategoryIncomeServiceImpl implements CategoryIncomeService {
+
     @Autowired
     private final CategoryIncomeRepository categoryIncomeRepository;
 

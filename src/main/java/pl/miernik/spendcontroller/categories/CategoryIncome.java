@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -15,7 +14,6 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @Table
 public class CategoryIncome {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

@@ -64,5 +64,10 @@ public class IncomeController {
         return categoryIncomeService.findAllCategories();
     }
 
+//    @ModelAttribute("paymentMethods")
+//    private List<PaymentMethods> paymentMethods(){
+//        return null;
+//    }
+
 
 }
