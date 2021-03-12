@@ -1,4 +1,4 @@
-package pl.miernik.spendcontroller.categories;
+package pl.miernik.spendcontroller.paymentMethods;
 
 import lombok.*;
 
@@ -13,7 +13,7 @@ import javax.validation.constraints.NotBlank;
 @ToString
 @Builder
 @Table
-public class CategoryExpense {
+public class PaymentMethod {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
