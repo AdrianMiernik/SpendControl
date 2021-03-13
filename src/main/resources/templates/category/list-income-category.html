@@ -6,14 +6,14 @@
     <script th:replace="header :: headerElement"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <title>Expense Category</title>
+    <title>Income Category</title>
 </head>
 
 <body>
 <div th:replace="header :: header"></div>
 <div class="container my-5 ">
-    <h1>Expense Category</h1>
-    <a th:href="@{/settings/categoryExpense/add}" class="btn btn-primary btn-sm mb-3 "> Add Category</a>
+    <h1>Income Category</h1>
+    <a th:href="@{/settings/income/add}" class="btn btn-primary btn-sm mb-3 "> Add Category</a>
     <table class="table table-bordered table-hover table-responsive-md table-striped table-dark w-auto">
         <thead>
         <tr class="bg-dark text-white">
@@ -24,8 +24,8 @@
         <tbody>
         <tr th:each="category : ${categoryList}">
             <td th:text="${category.name}"></td>
-            <td><a th:href="@{/settings/expense/update/{id}(id=${category.id})}" class="btn btn-primary">Update</a>
-                <a th:href="@{/settings/expense/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a>
+            <td><a th:href="@{/settings/income/update/{id}(id=${category.id})}" class="btn btn-primary">Update</a>
+                <a th:href="@{/settings/income/delete/{id}(id=${category.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
