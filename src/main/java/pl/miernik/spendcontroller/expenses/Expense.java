@@ -6,6 +6,7 @@ import pl.miernik.spendcontroller.payments.PaymentMethod;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,7 +22,8 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private BigDecimal amount;
-    private String date;
+    //    private String date;
+    private LocalDate transactionDate;
     @ManyToOne
     @JoinColumn(name = "categoryExpense_id")
     private CategoryExpense categoryExpense;
