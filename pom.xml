@@ -13,8 +13,13 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>spendcontroller</name>
     <description>Spring Boot</description>
+
     <properties>
         <java.version>11</java.version>
+
+        <!-- Model Mapper - for DTO purpose -->
+        <modelmapper.version>2.3.8</modelmapper.version>
+
     </properties>
     <dependencies>
         <dependency>
@@ -53,6 +58,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Model Mapper - for DTO purpose -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
         </dependency>
 
     </dependencies>

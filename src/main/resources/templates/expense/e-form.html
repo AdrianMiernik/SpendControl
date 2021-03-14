@@ -11,10 +11,9 @@
 <body>
 <div th:replace="header :: header"></div>
 
-<div class="container">
+<div class="container my-5">
     <h1>Add Expense</h1>
     <hr>
-    <h2>Save</h2>
     <form th:action="@{/expense/add}" th:object="${expense}" method="post">
         <div>
             <input type="hidden" th:field="*{id}"/>
