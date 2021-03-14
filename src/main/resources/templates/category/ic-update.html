@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script th:replace="header :: headerElement"></script>
+    <meta charset="UTF-8">
+    <title>Income Category Form</title>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+<div class="container my-5">
+
+
+    <h1>Add Income Category</h1>
+    <hr>
+
+    <form th:action="@{/settings/categoryIncome/update}" th:object="${categoryIncome}" method="post">
+        <div>
+            <input type="hidden" th:field="*{id}"/>
+        </div>
+
+        <div>
+            <input type="text" th:field="*{name}" placeholder="Income Category" class="form-control mb-4 col-4">
+        </div>
+        <div>
+            <button type="submit" class="btn btn-info col-2"> Save</button>
+        </div>
+    </form>
+    <hr>
+    <a th:href="@{/settings/categoryIncome}" class="btn btn-light col-2"> Back to the List</a>
+
+</div>
+
+</body>
+</html>
