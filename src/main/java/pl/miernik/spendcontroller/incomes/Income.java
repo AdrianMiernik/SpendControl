@@ -2,6 +2,7 @@ package pl.miernik.spendcontroller.incomes;
 
 import lombok.*;
 import pl.miernik.spendcontroller.categories.CategoryIncome;
+import pl.miernik.spendcontroller.users.User;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,13 +21,19 @@ public class Income {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private BigDecimal amount;
+
     private LocalDate transactionDate;
+
     @ManyToOne
     @JoinColumn(name = "categoryIncome_id")
     private CategoryIncome categoryIncome;
+
     @Column(length = 128, nullable = false)
     private String comment;
 
+    @ManyToOne
+    private User user;
 
 }
