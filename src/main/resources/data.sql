@@ -1,4 +1,31 @@
 --
+-- Dumping data for table `users`
+--
+LOCK TABLES `users` WRITE;
+INSERT INTO users
+VALUES (1, 'john@gmail.com', 'John', 'Smith', 'pass1', 'admin'),
+       (2, 'ola@gmail.com', 'Ola', 'Nowak', 'pass2', 'user');
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `roles`
+--
+LOCK TABLES `roles` WRITE;
+INSERT INTO roles
+VALUES (1, 'ROLE_ADMIN'),
+       (2, 'ROLE_USER');
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `users_roles`
+--
+LOCK TABLES `users_roles` WRITE;
+INSERT INTO users_roles
+VALUES (1, 1),
+       (2, 2);
+UNLOCK TABLES;
+
+--
 -- Dumping data for table `category_income`
 --
 LOCK TABLES `category_income` WRITE;
@@ -15,9 +42,9 @@ UNLOCK TABLES;
 
 LOCK TABLES `incomes` WRITE;
 INSERT INTO incomes
-VALUES (1, '1200', 'Mountain Bike', '2020-12-10', '2'),
-       (2, '2500', 'Regular Salary', '2021-01-20', '1'),
-       (3, '500', 'Pizza Delivery', '2021-02-28', '4');
+VALUES (1, '1200', 'Mountain Bike', '2020-12-10', '2', '1'),
+       (2, '2500', 'Regular Salary', '2021-01-20', '1', '1'),
+       (3, '500', 'Pizza Delivery', '2021-02-28', '4', '1');
 UNLOCK TABLES;
 
 --
@@ -51,10 +78,10 @@ UNLOCK TABLES;
 --
 LOCK TABLES `expenses` WRITE;
 INSERT INTO expenses
-VALUES (1, '1800', 'Monthly Rate - Barclays', '2021-03-01', '1', '4'),
-       (2, '210', 'Grocery - Biedronka', '2021-01-12', '6', '5'),
-       (3, '150', 'Antibiotic', '2021-02-13', '4', '3'),
-       (4, '243', 'Petrol', '2021-03-17', '2', '2'),
-       (5, '620', 'Loan Rate - Millenium', '2021-02-07', '3', '4'),
-       (6, '120', 'Cinema with Family', '2021-03-22', '5', '1');
+VALUES (1, '1800', 'Monthly Rate - Barclays', '2021-03-01', '1', '4', '1'),
+       (2, '210', 'Grocery - Biedronka', '2021-01-12', '6', '5', '1'),
+       (3, '150', 'Antibiotic', '2021-02-13', '4', '3', '1'),
+       (4, '243', 'Petrol', '2021-03-17', '2', '2', '1'),
+       (5, '620', 'Loan Rate - Millenium', '2021-02-07', '3', '4', '1'),
+       (6, '120', 'Cinema with Family', '2021-03-22', '5', '1', '1');
 UNLOCK TABLES;
