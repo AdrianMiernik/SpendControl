@@ -30,10 +30,10 @@ UNLOCK TABLES;
 --
 LOCK TABLES `category_income` WRITE;
 INSERT INTO category_income
-VALUES (1, 'Salaries and Wages'),
-       (2, 'Sold on Allegro'),
-       (3, 'Flat rental'),
-       (4, 'Side Hustle');
+VALUES (1, 'Salary'),
+       (2, 'Sold'),
+       (3, 'Renting'),
+       (4, 'Side hustle');
 UNLOCK TABLES;
 
 --
@@ -58,7 +58,7 @@ VALUES (1, 'Mortgage'),
        (4, 'Utility Bills'),
        (5, 'Pharmacy'),
        (6, 'Entertainment'),
-       (7, 'Meals');
+       (7, 'Meal');
 UNLOCK TABLES;
 
 --
@@ -79,9 +79,9 @@ UNLOCK TABLES;
 LOCK TABLES `expenses` WRITE;
 INSERT INTO expenses
 VALUES (1, '1800', 'Monthly Rate - Barclays', '2021-03-01', '1', '4', '1'),
-       (2, '210', 'Grocery - Biedronka', '2021-01-12', '6', '5', '1'),
-       (3, '150', 'Antibiotic', '2021-02-13', '4', '3', '1'),
+       (2, '210', 'Grocery - Biedronka', '2021-01-12', '7', '5', '1'),
+       (3, '150', 'Antibiotic', '2021-02-13', '5', '3', '1'),
        (4, '243', 'Petrol', '2021-03-17', '2', '2', '1'),
        (5, '620', 'Loan Rate - Millenium', '2021-02-07', '3', '4', '1'),
-       (6, '120', 'Cinema with Family', '2021-03-22', '5', '1', '1');
+       (6, '120', 'Cinema with Family', '2021-03-22', '6', '1', '1');
 UNLOCK TABLES;

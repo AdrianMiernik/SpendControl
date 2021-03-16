@@ -40,4 +40,6 @@ public class IncomeServiceImpl implements IncomeService{
     public void deleteIncomeById(long id) {
     this.incomeRepository.deleteById(id);
     }
+
+
 }

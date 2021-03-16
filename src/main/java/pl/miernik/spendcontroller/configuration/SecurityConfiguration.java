@@ -1,2 +1,4 @@
-package pl.miernik.spendcontroller.configuration;public class SecirutyConfiguration {
+package pl.miernik.spendcontroller.configuration;
+
+public class SecurityConfiguration {
 }

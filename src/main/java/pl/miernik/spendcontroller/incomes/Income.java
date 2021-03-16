@@ -27,7 +27,7 @@ public class Income {
     private LocalDate transactionDate;
 
     @ManyToOne
-    @JoinColumn(name = "categoryIncome_id")
+    @JoinColumn(name = "category_income")
     private CategoryIncome categoryIncome;
 
     @Column(length = 128, nullable = false)
