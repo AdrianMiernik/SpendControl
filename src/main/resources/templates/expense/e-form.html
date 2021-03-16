@@ -31,9 +31,9 @@
                 </th:block>
             </select>
         </div>
-        <diV>
+        <div>
             <input type="text" th:field="*{comment}" th:placeholder="Comment" class="form-control mb-4 col-4">
-        </diV>
+        </div>
                 <div>
                     <select th:field="*{paymentMethod}" placeholder="Payment Method" class="form-control mb-4 col-4">
                         <th:block th:each="method : ${paymentMethods}">

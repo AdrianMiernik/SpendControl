@@ -28,6 +28,7 @@
         <div>
             <select th:field="*{categoryIncome}" placeholder="Category" class="form-control mb-4 col-4">
                 <th:block th:each="cat : ${categories}">
+
                     <option th:text="${cat.name}" th:value="${cat.id}"/>
                 </th:block>
             </select>
