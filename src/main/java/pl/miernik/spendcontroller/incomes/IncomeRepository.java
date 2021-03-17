@@ -12,13 +12,12 @@ public interface IncomeRepository extends JpaRepository<Income, Long> {
 
 // working but not aggregating data
 
+//    @Query("SELECT DISTINCT c.name, Sum(i.amount) FROM CategoryIncome c, Income i WHERE i.categoryIncome = c.id GROUP BY c.name")
+//    List<Income> displayIncomeSumPerCategory0();
 
+    @Query(name = "income_test_result", nativeQuery = true)
+    List<IncomeTest> displayIncomeSumPerCategory0();
 
-//    @Query(name = "income_test_result", nativeQuery = true)
-//    List<IncomeTest> displayIncomeSumPerCategory0();
-
-    @Query("SELECT DISTINCT c.name, Sum(i.amount) FROM CategoryIncome c, Income i WHERE i.categoryIncome = c.id GROUP BY c.name")
-    List<Income> displayIncomeSumPerCategory0();
 
 
     @Query(value = "SELECT category_income.name, sum(incomes.amount)\n" +
