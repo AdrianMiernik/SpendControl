@@ -10,12 +10,36 @@ import java.util.List;
 @Repository
 public interface IncomeRepository extends JpaRepository<Income, Long> {
 
+// working but not aggregating data
+    @Transactional
+    @Query(value = "SELECT category_income.name, sum(incomes.amount)\n" +
+            "FROM category_income, incomes\n" +
+            "WHERE incomes.category_income = category_income.id\n" +
+            "GROUP BY category_income.name",
+            nativeQuery = true)
+    List<Income> displayIncomeSumPerCategory1();
 
     @Transactional
-    @Query(value = "SELECT incomes.id, category_income.name, sum(incomes.amount) from incomes inner join category_income on incomes.category_income = category_income.id group by category_income.name",
+    @Query(value = "SELECT incomes.id, category_income.name, sum(incomes.amount)\n" +
+            "FROM category_income, incomes\n" +
+            "WHERE incomes.category_income = category_income.id\n" +
+            "GROUP BY category_income.name",
             nativeQuery = true)
-    List<Income> displayIncomeSumPerCategory();
+    List<Income> displayIncomeSumPerCategory2();
 
+    @Transactional
+    @Query(value = "SELECT incomes.id, category_income.name, sum(incomes.amount)\n" +
+            "FROM category_income, incomes\n" +
+            "WHERE incomes.category_income = category_income.id\n" +
+            "GROUP BY category_income.name, incomes.id",
+            nativeQuery = true)
+    List<Income> displayIncomeSumPerCategory3();
 
-
+    @Transactional
+    @Query(value = "SELECT sum(incomes.amount) as total, category_income.name\n" +
+            "FROM incomes\n" +
+            "left join category_income on incomes.category_income = category_income.id\n" +
+            "GROUP BY category_income.name;",
+            nativeQuery = true)
+    List<Income> displayIncomeSumPerCategory4();
 }
