@@ -10,6 +10,5 @@ public interface IncomeService {
     Income getIncomeById(long id);
     void deleteIncomeById(long id);
 
-    // DTO methods
-//    List<IncomeDto> findIncomeSumPerCategory();
+
 }
