@@ -53,7 +53,7 @@ public class Income {
     @ManyToOne
     private User user;
 
-    private IncomeTest incomeTest;
+
 
 
 }
