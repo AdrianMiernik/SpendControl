@@ -44,7 +44,8 @@ LOCK TABLES `incomes` WRITE;
 INSERT INTO incomes
 VALUES (1, '1200', 'Mountain Bike', '2020-12-10', '2', '1'),
        (2, '2500', 'Regular Salary', '2021-01-20', '1', '1'),
-       (3, '500', 'Pizza Delivery', '2021-02-28', '4', '1');
+       (3, '500', 'Pizza Delivery', '2021-02-28', '4', '1'),
+       (4, '225', 'Old Chair', '2021-03-14', '2', '1');
 UNLOCK TABLES;
 
 --

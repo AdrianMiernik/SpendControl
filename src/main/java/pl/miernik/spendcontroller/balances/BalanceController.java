@@ -28,23 +28,21 @@ public class BalanceController {
     private final PaymentMethodService paymentMethodService;
 
 
-
     @GetMapping("")
     public String displayBalance(Model model) {
         model.addAttribute("incomeList", incomeService.findAllIncomes());
-        model.addAttribute("expenseList",expenseService.findAllExpenses());
-        model.addAttribute("timeOptions",populateTimeOptions());
+        model.addAttribute("expenseList", expenseService.findAllExpenses());
+        model.addAttribute("timeOptions", populateTimeOptions());
 
-        model.addAttribute("sumPerCategoryIncome",incomeRepository.displayIncomeSumPerCategory());
+        model.addAttribute("sumPerCategoryIncome", incomeRepository.displayIncomeSumPerCategory1());
 
         return ("balance/b-list");
     }
 
 
-
-    @ModelAttribute(name= "timeOptions")
+    @ModelAttribute(name = "timeOptions")
     public List<String> populateTimeOptions() {
-        List<String> timeOptions= new ArrayList<String>();
+        List<String> timeOptions = new ArrayList<String>();
         timeOptions.add("Current Month");
         timeOptions.add("Previous Month");
         timeOptions.add("Last Year");
@@ -53,43 +51,37 @@ public class BalanceController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //DTO
+//// Version before DTO
 //    @GetMapping("")
-//    public filteredBalanceList(
-//            @ModelAttribute("balanceDto") BalanceDto balanceDto, ModelMap model,
-//            @SortDefault("id")
-//    )
+//    public String displayBalance(Model model) {
+//        model.addAttribute("incomeList", incomeService.findAllIncomes());
+//        model.addAttribute("expenseList",expenseService.findAllExpenses());
+//        model.addAttribute("timeOptions",populateTimeOptions());
 //
-//    @GetMapping
-//    @ResponseBody
-//    public List<BalanceDto> getBalance(
-//            @PathVariable("amount") BigDecimal amount,
-//            @PathVariable("transactionDate") LocalDate transactionDate) {
+//        model.addAttribute("sumPerCategoryIncome",incomeRepository.displayIncomeSumPerCategory());
 //
-//        List<Income> incomes = incomeService.findAllIncomes(amount,transactionDate);
-//        return incomes.stream()
-//                .map(this::convertToDto)
-//                .collect(Collectors.toList());
+//        return ("balance/b-list");
 //    }
 //
-//    private BalanceDto convertToDto(Income income, Model model) {
-//        BalanceDto balanceDto = modelMapper.map(income,BalanceDto.class);
-//        model.addAttribute("balanceDto", balanceDto);
-//        return ("");
+//
+//
+//    @ModelAttribute(name= "timeOptions")
+//    public List<String> populateTimeOptions() {
+//        List<String> timeOptions= new ArrayList<String>();
+//        timeOptions.add("Current Month");
+//        timeOptions.add("Previous Month");
+//        timeOptions.add("Last Year");
+//        timeOptions.add("Custom Period");
+//        return timeOptions;
 //    }
+
 }
+
+
+
+
+
+
+
+
+
