@@ -23,8 +23,6 @@ public class IncomeServiceImpl implements IncomeService{
        return incomeRepository.findAll();
     }
 
-
-
     @Override
     public void saveIncome(Income income) {
     this.incomeRepository.save(income);

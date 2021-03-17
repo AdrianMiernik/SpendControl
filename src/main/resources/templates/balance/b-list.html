@@ -42,8 +42,9 @@
                 </thead>
                 <tbody>
                 <tr th:each="sumInc : ${sumPerCategoryIncome}">
-                    <td th:text="${sumInc.categoryIncome.name}"></td>
+                    <td th:text="${sumInc.categoryIncome}"></td>
                     <td th:text="${sumInc.amount}"></td>
+
                 </tr>
                 </tbody>
             </table>

@@ -11,7 +11,16 @@ import java.util.List;
 public interface IncomeRepository extends JpaRepository<Income, Long> {
 
 // working but not aggregating data
-    @Transactional
+
+
+
+//    @Query(name = "income_test_result", nativeQuery = true)
+//    List<IncomeTest> displayIncomeSumPerCategory0();
+
+    @Query("SELECT DISTINCT c.name, Sum(i.amount) FROM CategoryIncome c, Income i WHERE i.categoryIncome = c.id GROUP BY c.name")
+    List<Income> displayIncomeSumPerCategory0();
+
+
     @Query(value = "SELECT category_income.name, sum(incomes.amount)\n" +
             "FROM category_income, incomes\n" +
             "WHERE incomes.category_income = category_income.id\n" +

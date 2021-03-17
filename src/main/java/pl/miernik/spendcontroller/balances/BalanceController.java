@@ -34,7 +34,7 @@ public class BalanceController {
         model.addAttribute("expenseList", expenseService.findAllExpenses());
         model.addAttribute("timeOptions", populateTimeOptions());
 
-        model.addAttribute("sumPerCategoryIncome", incomeRepository.displayIncomeSumPerCategory1());
+        model.addAttribute("sumPerCategoryIncome", incomeRepository.displayIncomeSumPerCategory0());
 
         return ("balance/b-list");
     }
