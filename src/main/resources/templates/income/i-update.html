@@ -6,6 +6,23 @@
     <script th:replace="header :: headerElement"></script>
     <meta charset="UTF-8">
     <title>Update Income</title>
+
+    <style>
+        span {
+            color: red;
+            font-style: italic;
+
+        }
+
+        .rollover {
+            padding-top: 20px;
+        }
+
+        .errorClass {
+            padding-top: 10px;
+        }
+    </style>
+
 </head>
 <body>
 <div th:replace="header :: header"></div>
@@ -17,31 +34,40 @@
             <input type="hidden" th:field="*{id}"/>
         </div>
 
-        <div>
+        <div class="errorClass">
             <input type="number" th:field="*{amount}" placeholder="Amount" class="form-control mb-4 col-4">
+            <div><span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Error name</span></div>
         </div>
 
-        <div>
+        <div class="errorClass">
             <input type="date" th:field="*{transactionDate}" placeholder="Date" class="form-control mb-4 col-4">
+            <span th:if="${#fields.hasErrors('transactionDate')}" th:errors="*{transactionDate}">Error name</span>
         </div>
 
-        <div>
-            <select th:field="*{categoryIncome}" placeholder="Category" class="form-control mb-4 col-4">
-                <th:block th:each="cat : ${categories}">
 
+        <div class="errorClass">
+            <div><label><b>Category:</b></label></div>
+            <select th:field="*{categoryIncome}" class="form-control mb-4 col-4">
+                <th:block th:each="cat : ${categories}">
                     <option th:text="${cat.name}" th:value="${cat.id}"/>
                 </th:block>
             </select>
         </div>
-        <div>
-            <input type="text" th:field="*{comment}" placeholder="Comment" class="form-control mb-4 col-4">
+
+        <div class="errorClass">
+            <div><label><b>Comment:</b> </label></div>
+            <div><input type="text" th:field="*{comment}" class="form-control mb-4 col-4"></div>
+            <div><span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}">Error name</span></div>
         </div>
+        <hr>
         <div>
             <button type="submit" class="btn btn-info col-2"> Update</button>
         </div>
     </form>
-    <hr>
-    <a th:href="@{/income}" class="btn btn-light col-2"> Back to Income List</a>
+
+    <div class="rollover">
+        <a th:href="@{/income}" class="btn btn-light col-2"> Back to Income List</a>
+    </div>
 </div>
 </body>
 </html>
