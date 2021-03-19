@@ -6,6 +6,9 @@ import pl.miernik.spendcontroller.payments.PaymentMethod;
 import pl.miernik.spendcontroller.users.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -34,9 +37,11 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull(message = "This field cannot be null.")
+    @Min(value = 1, message ="Number must be greater than or equal to {value}." )
     private BigDecimal amount;
 
-
+    @NotNull(message = "This field cannot be null.")
     private LocalDate transactionDate;
 
     @ManyToOne
@@ -44,7 +49,7 @@ public class Expense {
 
     private CategoryExpense categoryExpense;
 
-    @Column(length = 128, nullable = false)
+    @NotBlank(message = "This field cannot be blank.")
     private String comment;
 
     @ManyToOne
