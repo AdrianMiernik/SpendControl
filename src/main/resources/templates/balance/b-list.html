@@ -41,10 +41,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each=" category : ${categoryList}">
-                    <td th:text="${category.name}"></td>
-                    <td th:text="${category.amount}"></td>
-
+                <tr th:each=" sum : ${incomeSum}">
+                    <td th:text="${sum.name}"></td>
+                    <td th:text="${sum.amount}"></td>
                 </tr>
                 </tbody>
             </table>
@@ -60,10 +59,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="expense : ${expenseList}">
-                    <td th:text="${expense.categoryExpense.name}"></td>
-                    <td th:text="${expense.amount}"></td>
+                <tr th:each=" sum : ${expenseSum}">
+                    <td th:text="${sum.name}"></td>
+                    <td th:text="${sum.amount}"></td>
                 </tr>
+<!--                <tr th:each="expense : ${expenseList}">-->
+<!--                    <td th:text="${expense.categoryExpense.name}"></td>-->
+<!--                    <td th:text="${expense.amount}"></td>-->
+<!--                </tr>-->
                 </tbody>
             </table>
         </div>

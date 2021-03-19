@@ -6,15 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import pl.miernik.spendcontroller.categories.CategoryExpenseService;
-import pl.miernik.spendcontroller.categories.CategoryIncomeService;
 import pl.miernik.spendcontroller.expenses.ExpenseService;
-import pl.miernik.spendcontroller.incomes.IncomeRepository;
-import pl.miernik.spendcontroller.incomes.IncomeRepositoryDao;
 import pl.miernik.spendcontroller.incomes.IncomeService;
-import pl.miernik.spendcontroller.payments.PaymentMethodService;
 
-import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,24 +17,18 @@ import java.util.List;
 @RequestMapping("/balance")
 public class BalanceController {
     private final IncomeService incomeService;
-    private final IncomeRepository incomeRepository;
     private final ExpenseService expenseService;
-    private final CategoryIncomeService categoryIncomeService;
-    private final CategoryExpenseService categoryExpenseService;
-    private final PaymentMethodService paymentMethodService;
-    private final IncomeRepositoryDao incomeRepositoryDao;
-    private EntityManager entityManager;
+    private final BalanceRepository balanceRepository;
 
     @GetMapping("")
     public String displayBalance(Model model) {
         model.addAttribute("incomeList", incomeService.findAllIncomes());
         model.addAttribute("expenseList", expenseService.findAllExpenses());
         model.addAttribute("timeOptions", populateTimeOptions());
-        model.addAttribute("categoryList", incomeRepositoryDao.getDisplayIncomeSumPerCategory0() );
-
+        model.addAttribute("incomeSum", balanceRepository.displaySumPerCategoryIncome());
+        model.addAttribute("expenseSum", balanceRepository.displaySumPerCategoryExpense());
         return ("balance/b-list");
     }
-
 
     @ModelAttribute(name = "timeOptions")
     public List<String> populateTimeOptions() {

@@ -16,9 +16,9 @@ import java.time.LocalDate;
 @ToString
 @Entity
 @SqlResultSetMapping(
-        name = "income_test_result",
+        name = "income_dto",
         classes = @ConstructorResult(
-                targetClass = pl.miernik.spendcontroller.incomes.IncomeTest.class,
+                targetClass = IncomeDto.class,
                 columns = {
                         @ColumnResult(name = "amount", type = BigDecimal.class),
                         @ColumnResult(name = "name", type = String.class),

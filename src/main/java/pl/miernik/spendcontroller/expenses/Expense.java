@@ -16,6 +16,17 @@ import java.time.LocalDate;
 @Builder
 @ToString
 @Entity
+@SqlResultSetMapping(
+        name = "expense_dto",
+        classes = @ConstructorResult(
+                targetClass = pl.miernik.spendcontroller.expenses.ExpenseDto.class,
+                columns = {
+                        @ColumnResult(name = "amount", type = BigDecimal.class),
+                        @ColumnResult(name = "name", type = String.class),
+                }
+        )
+)
+
 @Table(name = "expenses")
 public class Expense {
 
