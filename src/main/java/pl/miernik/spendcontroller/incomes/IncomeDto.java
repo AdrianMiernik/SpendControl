@@ -2,13 +2,13 @@ package pl.miernik.spendcontroller.incomes;
 import java.math.BigDecimal;
 
 
-public class IncomeTest {
+public class IncomeDto {
     private BigDecimal amount;
     private String name;
 
-    public IncomeTest(){}
+    public IncomeDto(){}
 
-    public IncomeTest(BigDecimal amount, String name) {
+    public IncomeDto(BigDecimal amount, String name) {
         this.amount = amount;
         this.name = name;
     }
