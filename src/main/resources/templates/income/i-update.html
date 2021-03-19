@@ -44,7 +44,6 @@
             <span th:if="${#fields.hasErrors('transactionDate')}" th:errors="*{transactionDate}">Error name</span>
         </div>
 
-
         <div class="errorClass">
             <div><label><b>Category:</b></label></div>
             <select th:field="*{categoryIncome}" class="form-control mb-4 col-4">
@@ -59,6 +58,7 @@
             <div><input type="text" th:field="*{comment}" class="form-control mb-4 col-4"></div>
             <div><span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}">Error name</span></div>
         </div>
+
         <hr>
         <div>
             <button type="submit" class="btn btn-info col-2"> Update</button>

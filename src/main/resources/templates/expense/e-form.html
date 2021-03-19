@@ -7,6 +7,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Add Expense</title>
+
+    <style>
+        span {
+            color: red;
+            font-style: italic;
+
+        }
+
+        .rollover {
+            padding-top: 20px;
+        }
+
+        .errorClass {
+            padding-top: 10px;
+        }
+    </style>
+
 </head>
 <body>
 <div th:replace="header :: header"></div>
@@ -18,35 +35,53 @@
         <div>
             <input type="hidden" th:field="*{id}"/>
         </div>
-        <div>
-            <input type="number" th:field="*{amount}" placeholder="Amount" class="form-control mb-4 col-4"/>
+
+        <div class="errorClass">
+            <div><label><b>Amount:</b></label></div>
+            <input type="number" th:field="*{amount}" class="form-control mb-4 col-4">
+            <div> <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Error name</span></div>
         </div>
-        <div>
-            <input type="date" th:field="*{transactionDate}" placeholder="Date" class="form-control mb-4 col-4"/>
+
+        <div class="errorClass">
+            <div><label><b>Date:</b></label></div>
+            <input type="date" th:field="*{transactionDate}"  class="form-control mb-4 col-4">
+            <span th:if="${#fields.hasErrors('transactionDate')}" th:errors="*{transactionDate}">Error name</span>
         </div>
-        <div>
-            <select th:field="*{categoryExpense}" placeholder="Category" class="form-control mb-4 col-4">
+
+        <div class="errorClass">
+            <div><label><b>Category:</b></label></div>
+            <select th:field="*{categoryExpense}" class="form-control mb-4 col-4">
                 <th:block th:each="category : ${categories}">
                     <option th:text="${category.name}" th:value="${category.id}"/>
                 </th:block>
             </select>
         </div>
-        <div>
-            <input type="text" th:field="*{comment}" th:placeholder="Comment" class="form-control mb-4 col-4">
+
+        <div class="errorClass">
+            <div><label><b>Comment:</b> </label></div>
+            <div> <input type="text" th:field="*{comment}" class="form-control mb-4 col-4"></div>
+            <div> <span th:if="${#fields.hasErrors('comment')}" th:errors="*{comment}">Error name</span></div>
         </div>
-                <div>
-                    <select th:field="*{paymentMethod}" placeholder="Payment Method" class="form-control mb-4 col-4">
-                        <th:block th:each="method : ${paymentMethods}">
-                            <option th:text="${method.name}" th:value="${method.id}"/>
-                        </th:block>
-                    </select>
-                </div>
+
+        <div class="errorClass">
+            <div><label><b>Payment:</b> </label></div>
+            <select th:field="*{paymentMethod}" class="form-control mb-4 col-4">
+                <th:block th:each="method : ${paymentMethods}">
+                    <option th:text="${method.name}" th:value="${method.id}"/>
+                </th:block>
+            </select>
+        </div>
+
+        <hr>
         <div>
             <button type="submit" class="btn btn-info col-2">Save</button>
         </div>
     </form>
-    <hr>
-    <a th:href="@{/expense}" class="btn btn-light col-2">Back to Expense List</a>
+
+
+    <div class="rollover">
+        <a th:href="@{/expense}" class="btn btn-light col-2">Back to Expense List</a>
+    </div>
 </div>
 </body>
 </html>

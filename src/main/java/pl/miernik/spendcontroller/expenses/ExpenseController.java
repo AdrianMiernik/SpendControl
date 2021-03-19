@@ -3,12 +3,14 @@ package pl.miernik.spendcontroller.expenses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.miernik.spendcontroller.categories.CategoryExpense;
 import pl.miernik.spendcontroller.categories.CategoryExpenseService;
 import pl.miernik.spendcontroller.payments.PaymentMethod;
 import pl.miernik.spendcontroller.payments.PaymentMethodService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -34,7 +36,10 @@ public class ExpenseController {
         return ("expense/e-form");
     }
     @PostMapping("/add")
-    public String addFormExpensePost(@ModelAttribute Expense expense){
+    public String addFormExpensePost(@Valid Expense expense, BindingResult validations){
+        if(validations.hasErrors()){
+            return ("expense/e-form");
+        }
         expenseService.saveExpense(expense);
         return ("redirect:/expense");
     }
@@ -45,6 +50,14 @@ public class ExpenseController {
         Expense expense = expenseService.getExpenseById(id);
         model.addAttribute("expense", expense);
         return ("expense/e-update");
+    }
+    @PostMapping("/update")
+    public String updateFormExpensePost(@Valid Expense expense, BindingResult validations){
+        if(validations.hasErrors()){
+            return ("expense/e-update");
+        }
+        expenseService.saveExpense(expense);
+        return ("redirect:/expense");
     }
 
     //Deleting expense
