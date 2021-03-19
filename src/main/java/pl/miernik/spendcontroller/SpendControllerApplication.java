@@ -10,4 +10,5 @@ public class SpendControllerApplication {
         SpringApplication.run(SpendControllerApplication.class, args);
     }
 
+
 }

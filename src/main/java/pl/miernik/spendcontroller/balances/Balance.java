@@ -5,7 +5,6 @@ import lombok.Setter;
 import pl.miernik.spendcontroller.expenses.Expense;
 import pl.miernik.spendcontroller.incomes.Income;
 
-
 @Getter
 @Setter
 public class Balance {
