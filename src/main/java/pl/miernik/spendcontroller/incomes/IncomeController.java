@@ -3,10 +3,12 @@ package pl.miernik.spendcontroller.incomes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.miernik.spendcontroller.categories.CategoryIncome;
 import pl.miernik.spendcontroller.categories.CategoryIncomeService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -32,7 +34,10 @@ public class IncomeController {
         return ("income/i-form");
     }
     @PostMapping("/add")
-    public String addFormIncomePost(@ModelAttribute Income income) {
+    public String addFormIncomePost(@Valid Income income, BindingResult violations) {
+        if(violations.hasErrors()){
+            return "income/i-form";
+        }
         this.incomeService.saveIncome(income);
         return ("redirect:/income");
     }
@@ -47,7 +52,10 @@ public class IncomeController {
     }
 
     @PostMapping("/update")
-    public String updateFormIncomePost(@ModelAttribute Income income) {
+    public String updateFormIncomePost(@Valid Income income, BindingResult violations) {
+        if(violations.hasErrors()){
+            return "income/i-update";
+        }
         this.incomeService.saveIncome(income);
         return ("redirect:/income");
     }

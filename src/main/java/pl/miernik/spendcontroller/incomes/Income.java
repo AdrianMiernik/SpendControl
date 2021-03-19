@@ -5,6 +5,9 @@ import pl.miernik.spendcontroller.categories.CategoryIncome;
 import pl.miernik.spendcontroller.users.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -12,7 +15,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
 @ToString
 @Entity
 @SqlResultSetMapping(
@@ -33,15 +35,18 @@ public class Income {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NotNull(message = "This field cannot be null.")
+    @Min(value = 1, message ="Number must be greater than or equal to {value}." )
     private BigDecimal amount;
 
+    @NotNull(message = "This field cannot be null.")
     private LocalDate transactionDate;
 
     @ManyToOne
     @JoinColumn(name = "category_income")
     private CategoryIncome categoryIncome;
 
-    @Column(length = 128, nullable = false)
+    @NotBlank(message = "This field cannot be blank.")
     private String comment;
 
     @ManyToOne
