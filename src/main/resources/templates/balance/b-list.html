@@ -41,9 +41,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="sumInc : ${sumPerCategoryIncome}">
-                    <td th:text="${sumInc.name}"></td>
-                    <td th:text="${sumInc.amount}"></td>
+                <tr th:each=" category : ${categoryList}">
+                    <td th:text="${category.name}"></td>
+                    <td th:text="${category.amount}"></td>
 
                 </tr>
                 </tbody>

@@ -15,18 +15,10 @@ import java.time.LocalDate;
 @Builder
 @ToString
 @Entity
-
-
-
-@NamedNativeQuery(
-        name = "income_test_source",
-        query = "SELECT category_income.name as name, sum(incomes.amount) as amount FROM category_income, incomes WHERE incomes.category_income = category_income.id GROUP BY category_income.name",
-        resultSetMapping = "income_test_result"
-)
 @SqlResultSetMapping(
         name = "income_test_result",
         classes = @ConstructorResult(
-                targetClass = IncomeTest.class,
+                targetClass = pl.miernik.spendcontroller.incomes.IncomeTest.class,
                 columns = {
                         @ColumnResult(name = "amount", type = BigDecimal.class),
                         @ColumnResult(name = "name", type = String.class),
@@ -54,8 +46,5 @@ public class Income {
 
     @ManyToOne
     private User user;
-
-
-
 
 }

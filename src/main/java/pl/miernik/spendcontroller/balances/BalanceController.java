@@ -10,9 +10,11 @@ import pl.miernik.spendcontroller.categories.CategoryExpenseService;
 import pl.miernik.spendcontroller.categories.CategoryIncomeService;
 import pl.miernik.spendcontroller.expenses.ExpenseService;
 import pl.miernik.spendcontroller.incomes.IncomeRepository;
+import pl.miernik.spendcontroller.incomes.IncomeRepositoryDao;
 import pl.miernik.spendcontroller.incomes.IncomeService;
 import pl.miernik.spendcontroller.payments.PaymentMethodService;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,15 +28,15 @@ public class BalanceController {
     private final CategoryIncomeService categoryIncomeService;
     private final CategoryExpenseService categoryExpenseService;
     private final PaymentMethodService paymentMethodService;
-
+    private final IncomeRepositoryDao incomeRepositoryDao;
+    private EntityManager entityManager;
 
     @GetMapping("")
     public String displayBalance(Model model) {
         model.addAttribute("incomeList", incomeService.findAllIncomes());
         model.addAttribute("expenseList", expenseService.findAllExpenses());
         model.addAttribute("timeOptions", populateTimeOptions());
-
-        model.addAttribute("sumPerCategoryIncome", incomeRepository.displayIncomeSumPerCategory0());
+        model.addAttribute("categoryList", incomeRepositoryDao.getDisplayIncomeSumPerCategory0() );
 
         return ("balance/b-list");
     }
@@ -50,30 +52,6 @@ public class BalanceController {
         return timeOptions;
     }
 
-
-//// Version before DTO
-//    @GetMapping("")
-//    public String displayBalance(Model model) {
-//        model.addAttribute("incomeList", incomeService.findAllIncomes());
-//        model.addAttribute("expenseList",expenseService.findAllExpenses());
-//        model.addAttribute("timeOptions",populateTimeOptions());
-//
-//        model.addAttribute("sumPerCategoryIncome",incomeRepository.displayIncomeSumPerCategory());
-//
-//        return ("balance/b-list");
-//    }
-//
-//
-//
-//    @ModelAttribute(name= "timeOptions")
-//    public List<String> populateTimeOptions() {
-//        List<String> timeOptions= new ArrayList<String>();
-//        timeOptions.add("Current Month");
-//        timeOptions.add("Previous Month");
-//        timeOptions.add("Last Year");
-//        timeOptions.add("Custom Period");
-//        return timeOptions;
-//    }
 
 }
 
