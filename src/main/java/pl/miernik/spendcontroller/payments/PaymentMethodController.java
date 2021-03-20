@@ -3,7 +3,10 @@ package pl.miernik.spendcontroller.payments;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
@@ -26,7 +29,10 @@ public class PaymentMethodController {
     }
 
     @PostMapping("/add")
-    public String addFormPaymentMethodPost(@ModelAttribute PaymentMethod paymentMethod) {
+    public String addFormPaymentMethodPost(@Valid PaymentMethod paymentMethod, BindingResult validations) {
+        if (validations.hasErrors()) {
+            return ("payment/pm-form");
+        }
         this.paymentMethodService.savePaymentMethod(paymentMethod);
         return ("redirect:/settings/paymentMethod");
     }
@@ -38,7 +44,10 @@ public class PaymentMethodController {
         return ("payment/pm-update");
     }
     @PostMapping("/update")
-    public String updatePaymentMethodPost(@ModelAttribute PaymentMethod paymentMethod) {
+    public String updatePaymentMethodPost(@Valid PaymentMethod paymentMethod, BindingResult validations) {
+        if (validations.hasErrors()) {
+            return ("payment/pm-form");
+        }
         this.paymentMethodService.savePaymentMethod(paymentMethod);
         return ("redirect:/settings/paymentMethod");
     }

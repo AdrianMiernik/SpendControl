@@ -4,7 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,8 +30,11 @@ public class CategoryExpenseController {
     }
 
     @PostMapping("/add")
-    public String addCategoryExpenseFormPost(@ModelAttribute CategoryExpense categoryExpense) {
-        this.categoryExpenseService.saveCategoryExpense(categoryExpense);
+    public String addCategoryExpenseFormPost(@Valid CategoryExpense categoryExpense, BindingResult validations) {
+        if(validations.hasErrors()){
+            return ("category/ec-form");
+        }
+        categoryExpenseService.saveCategoryExpense(categoryExpense);
         return ("redirect:/settings/categoryExpense");
     }
 
@@ -39,7 +45,10 @@ public class CategoryExpenseController {
         return ("category/ec-update");
     }
     @PostMapping("/update")
-    public String updateCategoryExpensePost(@ModelAttribute CategoryExpense categoryExpense) {
+    public String updateCategoryExpensePost(@Valid CategoryExpense categoryExpense, BindingResult validations) {
+        if(validations.hasErrors()){
+            return ("category/ec-update");
+        }
         this.categoryExpenseService.saveCategoryExpense(categoryExpense);
         return ("redirect:/settings/categoryExpense");
     }

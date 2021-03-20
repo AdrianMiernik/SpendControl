@@ -3,7 +3,10 @@ package pl.miernik.spendcontroller.categories;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @Controller
@@ -26,8 +29,11 @@ public class CategoryIncomeController {
         return ("category/ic-form");
     }
     @PostMapping("/add")
-    public String addFormIncomeCategoryPost(@ModelAttribute CategoryIncome categoryIncome) {
-        this.categoryIncomeService.saveCategoryIncome(categoryIncome);
+    public String addFormIncomeCategoryPost(@Valid CategoryIncome categoryIncome, BindingResult validations) {
+        if (validations.hasErrors()) {
+            return ("category/ic-form");
+        }
+        categoryIncomeService.saveCategoryIncome(categoryIncome);
         return ("redirect:/settings/categoryIncome");
     }
     @GetMapping("/update/{id}")
@@ -37,7 +43,10 @@ public class CategoryIncomeController {
         return ("category/ic-update");
     }
     @PostMapping("/update")
-    public String updateFormIncomeCategory(@ModelAttribute CategoryIncome categoryIncome) {
+    public String updateFormIncomeCategory(@Valid CategoryIncome categoryIncome, BindingResult validations) {
+        if (validations.hasErrors()) {
+            return ("category/ic-form");
+        }
         categoryIncomeService.saveCategoryIncome(categoryIncome);
         return ("redirect:/settings/categoryIncome");
     }
