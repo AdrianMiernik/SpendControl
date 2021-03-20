@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,7 +18,8 @@ public class CategoryExpense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @NotBlank
-    @Column(length = 45, nullable = false, unique = true)
+
+    @NotBlank(message = "This field cannot be blank.")
+    @Size(min = 4, max = 25, message = "Minimum size {min} characters, maximum {max} characters.")
     private String name;
 }

@@ -6,6 +6,22 @@
     <script th:replace="header :: headerElement"></script>
     <meta charset="UTF-8">
     <title>Income Category Form</title>
+    <style>
+        span {
+            color: red;
+            font-style: italic;
+
+        }
+
+        .rollover {
+            padding-top: 20px;
+        }
+
+        .errorClass {
+            padding-top: 10px;
+        }
+    </style>
+
 </head>
 <body>
 <div th:replace="header :: header"></div>
@@ -21,16 +37,20 @@
             <input type="hidden" th:field="*{id}"/>
         </div>
 
-        <div>
+        <div class="errorClass">
             <input type="text" th:field="*{name}" placeholder="Income Category" class="form-control mb-4 col-4">
+            <div><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error name</span></div>
         </div>
+
+        <hr>
         <div>
             <button type="submit" class="btn btn-info col-2"> Save</button>
         </div>
     </form>
-    <hr>
-    <a th:href="@{/settings/categoryIncome}" class="btn btn-light col-2"> Back to the List</a>
 
+    <div class="rollover">
+    <a th:href="@{/settings/categoryIncome}" class="btn btn-light col-2"> Back to the List</a>
+    </div>
 </div>
 
 </body>
