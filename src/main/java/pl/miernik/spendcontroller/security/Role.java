@@ -1,4 +1,4 @@
-package pl.miernik.spendcontroller.users;
+package pl.miernik.spendcontroller.security;
 
 import lombok.*;
 

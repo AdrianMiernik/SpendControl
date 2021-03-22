@@ -1,10 +1,12 @@
 --
 -- Dumping data for table `users`
 --
+-- admin password: pass1
+-- user password: pass2
 LOCK TABLES `users` WRITE;
 INSERT INTO users
-VALUES (1, 'john@gmail.com', 'John', 'Smith', 'pass1', 'admin'),
-       (2, 'ola@gmail.com', 'Ola', 'Nowak', 'pass2', 'user');
+VALUES (1, 'john@gmail.com', 'John', 'Smith', '$2a$10$sQH8n.0CbcTSMDVVJFMVqukBoyGc20c7bBWcgKM6Tx2gp83r7i9au', 'admin'),
+       (2, 'ola@gmail.com', 'Ola', 'Nowak', '$2a$10$XeuDAhqndVsDzZC.TwFGk.T9j.FRnHqr/oodfI970INRwKXDpDQf2', 'user');
 UNLOCK TABLES;
 
 --

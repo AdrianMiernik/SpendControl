@@ -46,7 +46,6 @@ public class Expense {
 
     @ManyToOne
     @JoinColumn(name = "categoryExpense_id")
-
     private CategoryExpense categoryExpense;
 
     @NotBlank(message = "This field cannot be blank.")

@@ -13,10 +13,6 @@ public class IncomeServiceImpl implements IncomeService{
 
     @Autowired
     private final IncomeRepository incomeRepository;
-//    @Autowired
-//    private final IncomeDtoToIncomeConverter incomeDtoToIncomeConverter;
-//    @Autowired
-//    private final IncomeToIncomeDtoConverter incomeToIncomeDtoConverter;
 
     @Override
     public List<Income> findAllIncomes() {
@@ -44,18 +40,5 @@ public class IncomeServiceImpl implements IncomeService{
     public void deleteIncomeById(long id) {
     this.incomeRepository.deleteById(id);
     }
-
-    //DTO methods
-//    @Override
-//    public List<IncomeDto> findIncomeSumPerCategory() {
-//        return incomeRepository.findAll().stream()
-//                .map(incomeToIncomeDtoConverter::convert)
-//                .collect(Collectors.toList());
-//    }
-//
-//    public Income save(IncomeDto incomeDto) {
-//        Income income = incomeDtoToIncomeConverter.convert(incomeDto);
-//        return incomeRepository.save(income);
-//    }
 
 }
