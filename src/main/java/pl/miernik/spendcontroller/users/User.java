@@ -3,6 +3,7 @@ package pl.miernik.spendcontroller.users;
 import lombok.*;
 import pl.miernik.spendcontroller.expenses.Expense;
 import pl.miernik.spendcontroller.incomes.Income;
+import pl.miernik.spendcontroller.security.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -36,7 +37,7 @@ public class User {
     @NotBlank
     @Column(nullable = false, unique = true)
     @Size(max = 25)
-    private String username;
+    private String userName;
 
     @NotBlank
     @Column(nullable = false, unique = true)
@@ -46,6 +47,9 @@ public class User {
     @Email
     @Column(nullable = false)
     private String email;
+
+//    @Column(nullable = false)
+//    private Boolean enabled;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
