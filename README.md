@@ -32,7 +32,7 @@ equips user tracking day-to-day incomes/expenses and  allow analyse the results 
 * compare money flow per category
 * see the balance
 
-##### To do
+#### To do
 * get results for defined period of time
 * export results to pdf
 * visualization chart – JavaScript D3
