@@ -38,3 +38,4 @@ equips user tracking day-to-day incomes/expenses and  allow analyse the results 
 * visualization chart – JavaScript D3
 
 ## Database structure
+![database](database-spend.png)
