@@ -1,6 +1,9 @@
 # Spend Controller
 >Purpose for creating this application  was the desire to keep spend under control, generate savings, understand budget leaks.
 
+## Video
+https://drive.google.com/file/d/1_rB0e1xFF_wxwDi-89h_5FV_F6K0aVp8/view?usp=sharing
+
 ## Table of elements
 * [Description](#description)
 * [Technogy Stack](#technogy-stack)
